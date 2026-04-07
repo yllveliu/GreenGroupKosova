@@ -1,6 +1,5 @@
 import { Leaf, Facebook, Instagram, Linkedin, ArrowUp } from 'lucide-react';
-import logo from "../assets/images/logo.png";
-
+import logo from "../Assets/images/logo.png";
 export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
