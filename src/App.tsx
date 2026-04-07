@@ -8,6 +8,9 @@ import Wholesale from './components/Wholesale';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { Analytics } from '@vercel/analytics/react';
+
+<Analytics />
 
 export default function App() {
   return (
