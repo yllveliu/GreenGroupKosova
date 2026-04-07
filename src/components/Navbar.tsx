@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Leaf, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
-import logo from "../assets/images/logo.png";
+import logo from "../Assets/images/logo.png";
 
 const navLinks = [
   { name: 'Ballina', href: '#home' },
