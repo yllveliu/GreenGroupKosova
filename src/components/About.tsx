@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Award, Users, Target, History } from 'lucide-react';
-import aboutImg from "../assets/images/about-farm.jpg";
+import aboutImg from "../Assets/images/about-farm.jpg";
 
 const stats = [
   { label: 'Themeluar', value: '2014', icon: <History className="text-primary-600" /> },

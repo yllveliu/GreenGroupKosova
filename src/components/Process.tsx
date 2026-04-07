@@ -1,9 +1,9 @@
 import { Thermometer, Sprout, Scissors, Box, CheckCircle2 } from 'lucide-react';
 import { motion } from 'motion/react';
-import cultivation from "../assets/images/cultivation.png";
-import growth from "../assets/images/growth.png";
-import harvesting from "../assets/images/harvesting.png";
-import packaging from "../assets/images/packaging.png";
+import cultivation from "../Assets/images/cultivation.png";
+import growth from "../Assets/images/growth.png";
+import harvesting from "../Assets/images/harvesting.png";
+import packaging from "../Assets/images/packaging.png";
 
 const steps = [
   {

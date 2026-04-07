@@ -1,6 +1,6 @@
 import { ArrowRight, ChevronRight, Play } from 'lucide-react';
 import { motion } from 'motion/react';
-import heroImg from "../assets/images/hero-mushrooms.png";
+import heroImg from "../Assets/images/hero-mushrooms.png";
 
 export default function Hero() {
   return (
