@@ -71,12 +71,12 @@ export default function Testimonials() {
               </p>
 
               <div className="flex items-center gap-4">
-                <img
+                {/* <img
                   src={testimonial.image}
                   alt={testimonial.name}
                   className="w-14 h-14 rounded-2xl object-cover shadow-md"
                   referrerPolicy="no-referrer"
-                />
+                /> */}
                 <div>
                   <h4 className="font-bold text-slate-900">{testimonial.name}</h4>
                   <p className="text-xs text-primary-600 font-medium uppercase tracking-wider">{testimonial.role}</p>
