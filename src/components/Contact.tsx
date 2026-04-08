@@ -1,7 +1,10 @@
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Send, MessageCircle, Clock } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Contact() {
+  const { t } = useLanguage();
+
   return (
     <section id="contact" className="section-padding bg-white">
       <div className="container-custom">
@@ -13,7 +16,7 @@ export default function Contact() {
               viewport={{ once: true }}
               className="text-primary-600 font-semibold tracking-widest uppercase text-sm"
             >
-              KONTAKTI
+              {t.contact.badge}
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -22,7 +25,8 @@ export default function Contact() {
               transition={{ delay: 0.1 }}
               className="text-4xl md:text-5xl font-bold text-slate-900 mt-4 mb-8"
             >
-              Na Kontaktoni për <span className="text-primary-600">Bashkëpunim</span>
+              {t.contact.title}{' '}
+              <span className="text-primary-600">{t.contact.titleHighlight}</span>
             </motion.h2>
             
             <motion.p
@@ -32,16 +36,16 @@ export default function Contact() {
               transition={{ delay: 0.2 }}
               className="text-lg text-slate-600 mb-12 leading-relaxed"
             >
-              Keni interes për furnizim me kërpudha të freskëta apo produkte të tjera? Na kontaktoni për oferta dhe bashkëpunim të qëndrueshëm.
+              {t.contact.description}
             </motion.p>
 
             <div className="space-y-8">
               {[
-                { icon: <Phone />, title: 'Na Telefononi', detail: '+383 44 844 297', sub: 'E hënë – e shtunë, 7am-3pm' },
-                { icon: <Mail />, title: 'Na shkruani', detail: 'ggkosova2014@gmail.com', sub: 'Përgjigjemi brenda 24 orëve' },
-                { icon: <MapPin />, title: 'Na vizitoni', detail: 'Livoç i Ultë, Gjilan', sub: 'Kosovë, 60000' },
-                { icon: <Clock />, title: 'Orari i punës', detail: '07:00 - 15:00', sub: 'E hënë – e shtunë' },
-              ].map((item, index) => (
+  { icon: <Phone />, title: t.contact.phoneTitle, detail: t.contact.phoneDetail, sub: t.contact.phoneSub },
+  { icon: <Mail />, title: t.contact.emailTitle, detail: t.contact.emailDetail, sub: t.contact.emailSub },
+  { icon: <MapPin />, title: t.contact.locationTitle, detail: t.contact.locationDetail, sub: t.contact.locationSub },
+  { icon: <Clock />, title: t.contact.hoursTitle, detail: t.contact.hoursDetail, sub: t.contact.hoursSub },
+].map((item, index) => (
                 <motion.div
                   key={item.title}
                   initial={{ opacity: 0, x: -20 }}
@@ -76,7 +80,7 @@ export default function Contact() {
                 className="inline-flex items-center gap-3 px-8 py-4 bg-green-500 text-white rounded-2xl font-bold hover:bg-green-600 transition-all shadow-lg shadow-green-500/20"
               >
                 <MessageCircle size={24} />
-                Na kontaktoni në WhatsApp
+                {t.contact.whatsappButton}
               </a>
             </motion.div>
           </div>
@@ -87,40 +91,40 @@ export default function Contact() {
             viewport={{ once: true }}
             className="bg-slate-50 p-8 md:p-12 rounded-[3rem] border border-slate-200 shadow-xl"
           >
-            <h3 className="text-2xl font-bold text-slate-900 mb-8">Dërgoni një Mesazh</h3>
+            <h3 className="text-2xl font-bold text-slate-900 mb-8">{t.contact.formTitle}</h3>
             <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700 ml-1">Emri i plotë</label>
+                  <label className="text-sm font-semibold text-slate-700 ml-1">{t.contact.fullNameLabel}</label>
                   <input
                     type="text"
-                    placeholder="John Doe"
+                    placeholder={t.contact.fullNamePlaceholder}
                     className="w-full bg-white border border-slate-200 rounded-2xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700 ml-1">Email</label>
+                  <label className="text-sm font-semibold text-slate-700 ml-1">{t.contact.emailLabel}</label>
                   <input
                     type="email"
-                    placeholder="john@example.com"
+                    placeholder={t.contact.emailPlaceholder}
                     className="w-full bg-white border border-slate-200 rounded-2xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                   />
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 ml-1">Subjekti</label>
+                <label className="text-sm font-semibold text-slate-700 ml-1">{t.contact.subjectLabel}</label>
                 <select className="w-full bg-white border border-slate-200 rounded-2xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all appearance-none">
-                  <option>Kërkesë për furnizim</option>
-                  <option>Pyetje për produkte</option>
-                  <option>Kërkesë për bashkëpunim</option>
-                  <option>Tjetër</option>
+                  <option>{t.contact.subjectOption1}</option>
+<option>{t.contact.subjectOption2}</option>
+<option>{t.contact.subjectOption3}</option>
+<option>{t.contact.subjectOption4}</option>
                 </select>
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-slate-700 ml-1">Mesazhi</label>
+                <label className="text-sm font-semibold text-slate-700 ml-1">{t.contact.messageLabel}</label>
                 <textarea
                   rows={5}
-                  placeholder="Si mund të ju ndihmojmë?"
+                  placeholder={t.contact.messagePlaceholder}
                   className="w-full bg-white border border-slate-200 rounded-2xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all resize-none"
                 ></textarea>
               </div>
@@ -129,7 +133,7 @@ export default function Contact() {
                 className="w-full btn-primary flex items-center justify-center gap-2 py-5 text-lg"
               >
                 <Send size={20} />
-                Dërgo Mesazhin
+                {t.contact.submitButton}
               </button>
             </form>
           </motion.div>

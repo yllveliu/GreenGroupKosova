@@ -1,22 +1,23 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Leaf, Phone } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
 import logo from "../Assets/images/logo.png";
+import { useLanguage } from '../context/LanguageContext';
 
 const navLinks = [
-  { name: 'Ballina', href: '#home' },
-  { name: 'Rreth Nesh', href: '#about' },
-  { name: 'Produktet', href: '#products' },
-  { name: 'Proceset', href: '#process' },
-  { name: 'Furnizim', href: '#wholesale' },
-  // { name: 'AI Planner', href: '#ai-planner' },
-  { name: 'Kontakt', href: '#contact' },
-];
+  { key: 'home', href: '#home' },
+  { key: 'about', href: '#about' },
+  { key: 'products', href: '#products' },
+  { key: 'process', href: '#process' },
+  { key: 'wholesale', href: '#wholesale' },
+  { key: 'contact', href: '#contact' },
+] as const;
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t, language, setLanguage } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,19 +64,50 @@ export default function Navbar() {
 </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className={cn(
-                'text-sm font-medium transition-colors hover:text-primary-600',
-                scrolled ? 'text-slate-600' : 'text-white/90 hover:text-white'
-              )}
-            >
-              {link.name}
-            </a>
-          ))}
+  <a
+    key={link.key}
+    href={link.href}
+    className={cn(
+      'text-sm font-medium transition-colors hover:text-primary-600',
+      scrolled ? 'text-slate-600' : 'text-white/90 hover:text-white'
+    )}
+  >
+    {t.navbar[link.key]}
+  </a>
+))}
+  <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-2 py-1">
+  <button
+    type="button"
+    onClick={() => setLanguage('al')}
+    className={cn(
+      'px-3 py-1 rounded-full text-xs font-semibold transition-all',
+      language === 'al'
+        ? 'bg-white text-slate-900'
+        : scrolled
+        ? 'text-slate-600 hover:text-slate-900'
+        : 'text-white/80 hover:text-white'
+    )}
+  >
+    AL
+  </button>
+
+  <button
+    type="button"
+    onClick={() => setLanguage('en')}
+    className={cn(
+      'px-3 py-1 rounded-full text-xs font-semibold transition-all',
+      language === 'en'
+        ? 'bg-white text-slate-900'
+        : scrolled
+        ? 'text-slate-600 hover:text-slate-900'
+        : 'text-white/80 hover:text-white'
+    )}
+  >
+    EN
+  </button>
+</div>
           <a
             href="#contact"
             className={cn(
@@ -86,20 +118,52 @@ export default function Navbar() {
             )}
           >
             <Phone size={16} />
-            <span>Na Kontaktoni</span>
+            <span>{t.navbar.contactButton}</span>
           </a>
         </div>
 
         {/* Mobile Toggle */}
-        <button
-          className={cn(
-            "md:hidden p-2 rounded-lg",
-            scrolled ? "text-slate-900" : "text-white"
-          )}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="lg:hidden flex items-center gap-2">
+  {/* Language Switcher Mobile */}
+  <div className="flex items-center gap-1 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-1 py-1">
+    <button
+      type="button"
+      onClick={() => setLanguage('al')}
+      className={cn(
+        'px-2 py-1 rounded-full text-[10px] font-semibold',
+        language === 'al'
+          ? 'bg-white text-slate-900'
+          : 'text-slate-700'
+      )}
+    >
+      AL
+    </button>
+
+    <button
+      type="button"
+      onClick={() => setLanguage('en')}
+      className={cn(
+        'px-2 py-1 rounded-full text-[10px] font-semibold',
+        language === 'en'
+          ? 'bg-white text-slate-900'
+          : 'text-slate-700'
+      )}
+    >
+      EN
+    </button>
+  </div>
+
+  {/* Hamburger */}
+  <button
+    className={cn(
+      "p-2 rounded-lg",
+      scrolled ? "text-slate-900" : "text-white"
+    )}
+    onClick={() => setIsOpen(!isOpen)}
+  >
+    {isOpen ? <X size={24} /> : <Menu size={24} />}
+  </button>
+</div>
       </div>
 
       {/* Mobile Nav */}
@@ -109,26 +173,26 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-b border-slate-100 overflow-hidden"
+            className="lg:hidden bg-white border-b border-slate-100 overflow-hidden"
           >
             <div className="container-custom py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-lg font-medium text-slate-600 hover:text-primary-600 px-2 py-1"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.name}
-                </a>
-              ))}
+  <a
+    key={link.key}
+    href={link.href}
+    className="text-lg font-medium text-slate-600 hover:text-primary-600 px-2 py-1"
+    onClick={() => setIsOpen(false)}
+  >
+    {t.navbar[link.key]}
+  </a>
+))}
               <a
                 href="#contact"
                 className="flex items-center justify-center gap-2 w-full bg-primary-700 text-white py-4 rounded-xl font-semibold mt-2"
                 onClick={() => setIsOpen(false)}
               >
                 <Phone size={20} />
-                <span>Get a Quote</span>
+                <span>{t.navbar.contactButton}</span>
               </a>
             </div>
           </motion.div>

@@ -1,6 +1,9 @@
 import { Leaf, Facebook, Instagram, Linkedin, ArrowUp } from 'lucide-react';
 import logo from "../Assets/images/logo.png";
+import { useLanguage } from '../context/LanguageContext';
+
 export default function Footer() {
+  const { t } = useLanguage();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -29,8 +32,7 @@ export default function Footer() {
             </a>
 
             <p className="text-slate-400 mb-6 text-sm">
-              Green Group Kosova është kompani e specializuar në prodhimin dhe furnizimin me kërpudha champignon,
-              kërpudha të konzervuara dhe substrat cilësor për bujqësi.
+              {t.footer.description}
             </p>
 
             <div className="flex gap-4">
@@ -48,51 +50,51 @@ export default function Footer() {
 
           {/* LINKS */}
           <div>
-            <h4 className="text-white font-bold mb-6 text-sm">LIDHJE TË SHPEJTA</h4>
+            <h4 className="text-white font-bold mb-6 text-sm">{t.footer.quickLinksTitle}</h4>
             <ul className="space-y-3 text-sm text-slate-400">
-              <li><a href="#home">Ballina</a></li>
-              <li><a href="#about">Rreth Nesh</a></li>
-              <li><a href="#products">Produktet</a></li>
-              <li><a href="#process">Procesi</a></li>
-              <li><a href="#wholesale">Furnizim</a></li>
-              <li><a href="#contact">Kontakt</a></li>
+              <li><a href="#home">{t.footer.home}</a></li>
+<li><a href="#about">{t.footer.about}</a></li>
+<li><a href="#products">{t.footer.products}</a></li>
+<li><a href="#process">{t.footer.process}</a></li>
+<li><a href="#wholesale">{t.footer.wholesale}</a></li>
+<li><a href="#contact">{t.footer.contact}</a></li>
             </ul>
           </div>
 
           {/* PRODUCTS */}
           <div>
-            <h4 className="text-white font-bold mb-6 text-sm">PRODUKTET</h4>
+            <h4 className="text-white font-bold mb-6 text-sm">{t.footer.productsTitle}</h4>
             <ul className="space-y-3 text-sm text-slate-400">
-              <li>Kërpudha të Freskëta</li>
-              <li>Kërpudha të Konzervuara</li>
-              <li>Substrat për Lule</li>
-              <li>Furnizim për Biznese</li>
+              <li>{t.footer.freshMushrooms}</li>
+<li>{t.footer.cannedMushrooms}</li>
+<li>{t.footer.flowerSubstrate}</li>
+<li>{t.footer.businessSupply}</li>
             </ul>
           </div>
 
           {/* KONTAKTI */}
           <div>
-            <h4 className="text-white font-bold mb-6 text-sm">KONTAKTI</h4>
+            <h4 className="text-white font-bold mb-6 text-sm">{t.footer.contactTitle}</h4>
 
             <div className="space-y-3 text-sm text-slate-400">
               <div>
-                <p className="text-white">Email</p>
+                <p className="text-white">{t.footer.emailLabel}</p>
                 <p>ggkosova2014@gmail.com</p>
               </div>
 
               <div>
-                <p className="text-white">Telefoni</p>
+                <p className="text-white">{t.footer.phoneLabel}</p>
                 <p>+383 44 844 297</p>
               </div>
 
               <div>
-                <p className="text-white">Adresa</p>
-                <p>Livoç i Ultë, Gjilan</p>
+                <p className="text-white">{t.footer.addressLabel}</p>
+                <p>{t.footer.addressValue}</p>
               </div>
 
               <div>
-                <p className="text-white">Orari</p>
-                <p>07:00 – 15:00</p>
+                <p className="text-white">{t.footer.hoursLabel}</p>
+                <p>{t.footer.hoursValue}</p>
               </div>
             </div>
           </div>
@@ -102,12 +104,17 @@ export default function Footer() {
         {/* BOTTOM */}
         <div className="border-t border-white/10 pt-6 flex justify-between items-center text-sm text-slate-500">
           <p>© {new Date().getFullYear()} Green Group Kosova</p>
-
-          <button onClick={scrollToTop} className="text-white">
-            <ArrowUp size={20} />
-          </button>
         </div>
-      </div>
+
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-primary-600 text-white shadow-lg shadow-primary-600/30 hover:bg-primary-700 transition-all flex items-center justify-center"
+          aria-label="Scroll to top"
+        >
+        <ArrowUp size={20} />
+        </button>
+        </div>
+      
     </footer>
   );
 }

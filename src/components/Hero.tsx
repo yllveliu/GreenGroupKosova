@@ -1,8 +1,11 @@
 import { ArrowRight, ChevronRight, Play } from 'lucide-react';
 import { motion } from 'motion/react';
 import heroImg from "../Assets/images/hero-mushrooms.png";
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-slate-900">
       {/* Background Image with Overlay */}
@@ -28,7 +31,7 @@ export default function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
             </span>
-            Prodhues i kërpudhave Champignon në Kosovë
+            {t.hero.badge}
           </motion.div>
 
           <motion.h1
@@ -37,7 +40,9 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold text-white leading-[1.1] mb-6"
           >
-            Freski dhe <span className="text-primary-400">Cilësi</span> nga Natyra
+            {t.hero.titleStart}{' '}
+            <span className="text-primary-400">{t.hero.titleHighlight}</span>{' '}
+            {t.hero.titleEnd}
           </motion.h1>
 
           <motion.p
@@ -46,7 +51,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl"
           >
-            Green Group-Kosova prodhon kërpudha champignon të freskëta dhe të konzervuara, si dhe substrat cilësor për bujqësi dhe lule, për biznese dhe partnerë në Kosovë dhe rajon.
+            {t.hero.description}
           </motion.p>
 
           <motion.div
@@ -56,11 +61,11 @@ export default function Hero() {
             className="flex flex-col sm:flex-row items-center gap-4"
           >
             <a href="#products" className="btn-primary w-full sm:w-auto flex items-center justify-center gap-2 group">
-              SHIKO PRODUKTET
+              {t.hero.primaryButton}
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a href="#wholesale" className="btn-secondary w-full sm:w-auto flex items-center justify-center gap-2 group !bg-white/10 !text-white !border-white/20 hover:!bg-white/20">
-              NA KONTAKTONI
+              {t.hero.secondaryButton}
               <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
           </motion.div>
@@ -69,26 +74,26 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="mt-16 flex w-full justify-center gap-12 border-t border-white/10 pt-8"
+            className="mt-16 flex w-full justify-start gap-12 border-t border-white/10 pt-8"
           >
             <div className="flex flex-col items-center text-center">
               <span className="text-3xl font-bold text-white">16+</span>
-              <span className="text-sm text-slate-400 uppercase tracking-wider">VITE PËRVOJË</span>
+              <span className="text-sm text-slate-400 uppercase tracking-wider">{t.hero.statYears}</span>
             </div>
             <div className="flex flex-col items-center text-center">
               <span className="text-3xl font-bold text-white">200t+</span>
-              <span className="text-sm text-slate-400 uppercase tracking-wider">PRODHIM VJETOR</span>
+              <span className="text-sm text-slate-400 uppercase tracking-wider">{t.hero.statProduction}</span>
             </div>
             <div className="flex flex-col items-center text-center">
               <span className="text-3xl font-bold text-white">100%</span>
-              <span className="text-sm text-slate-400 uppercase tracking-wider">PROCES NATYRAL</span>
+              <span className="text-sm text-slate-400 uppercase tracking-wider">{t.hero.statProcess}</span>
             </div>
           </motion.div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
@@ -96,7 +101,7 @@ export default function Hero() {
       >
         <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-white/40 to-transparent"></div>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 }

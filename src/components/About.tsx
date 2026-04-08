@@ -1,15 +1,34 @@
 import { motion } from 'motion/react';
 import { Award, Users, Target, History } from 'lucide-react';
 import aboutImg from "../Assets/images/about-farm.jpg";
-
-const stats = [
-  { label: 'Themeluar', value: '2014', icon: <History className="text-primary-600" /> },
-  { label: 'Prodhim vjetor', value: '200t+', icon: <Users className="text-primary-600" /> },
-  { label: 'Kërpudha & substrat', value: '3 produkte', icon: <Award className="text-primary-600" /> },
-  { label: 'Kosovë & rajon', value: 'Tregu ynë', icon: <Target className="text-primary-600" /> },
-];
+import { useLanguage } from '../context/LanguageContext';
 
 export default function About() {
+const { t } = useLanguage();
+
+const stats = [
+  {
+    label: t.about.statsFoundedLabel,
+    value: t.about.statsFoundedValue,
+    icon: <History className="text-primary-600" />,
+  },
+  {
+    label: t.about.statsProductionLabel,
+    value: t.about.statsProductionValue,
+    icon: <Users className="text-primary-600" />,
+  },
+  {
+    label: t.about.statsProductsLabel,
+    value: t.about.statsProductsValue,
+    icon: <Award className="text-primary-600" />,
+  },
+  {
+    label: t.about.statsMarketLabel,
+    value: t.about.statsMarketValue,
+    icon: <Target className="text-primary-600" />,
+  },
+];
+
   return (
     <section id="about" className="section-padding bg-earth-50 relative overflow-hidden">
       {/* Decorative Elements */}
@@ -43,8 +62,8 @@ export default function About() {
                   <Award size={28} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900">Prodhim i Kontrolluar</h4>
-                  <p className="text-xs text-slate-500 uppercase tracking-wider">Republika e Kosovës</p>
+                  <h4 className="font-bold text-slate-900">{t.about.floatingCardTitle}</h4>
+<p className="text-xs text-slate-500 uppercase tracking-wider">{t.about.floatingCardSubtitle}</p>
                 </div>
               </div>
               {/* <p className="text-sm text-slate-600 leading-relaxed">
@@ -63,7 +82,7 @@ export default function About() {
               viewport={{ once: true }}
               className="text-primary-600 font-semibold tracking-widest uppercase text-sm"
             >
-              Historia Jonë
+              {t.about.badge}
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -72,7 +91,8 @@ export default function About() {
               transition={{ delay: 0.1 }}
               className="text-4xl md:text-5xl font-bold text-slate-900 mt-4 mb-8"
             >
-              Përvojë Familjare në <span className="text-primary-600">Prodhimin e Kërpudhave Cilësore</span>
+              {t.about.titleStart}{' '}
+              <span className="text-primary-600">{t.about.titleHighlight}</span>
             </motion.h2>
             
             <motion.div
@@ -83,13 +103,13 @@ export default function About() {
               className="space-y-6 text-lg text-slate-600 leading-relaxed"
             >
               <p>
-                Green Group-Kosova është një biznes familjar i themeluar në Gjilan, i fokusuar në prodhimin e kërpudhave champignon dhe substratit cilësor për bujqësi.
+                {t.about.paragraph1}
               </p>
               <p>
-                Me mbi 15 vite përvojë, ne kemi ndërtuar një proces të qëndrueshëm prodhimi që garanton freski, cilësi dhe standarde të larta për tregun vendor dhe rajonal.
+                {t.about.paragraph2}
               </p>
               <p>
-                Produktet tona përfshijnë kërpudha të freskëta, të konzervuara dhe substrat për kultivim, të përshtatshme për biznese, markete dhe fermerë.
+                {t.about.paragraph2}
               </p>
             </motion.div>
 
