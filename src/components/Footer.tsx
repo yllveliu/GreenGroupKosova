@@ -28,148 +28,142 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-slate-900 pt-16 sm:pt-20 pb-8 sm:pb-10 overflow-hidden relative">
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary-600/5 rounded-full blur-3xl translate-y-1/2 translate-x-1/2"></div>
+    <footer className="bg-slate-900 pt-12 sm:pt-16 lg:pt-20 pb-8 sm:pb-10 overflow-hidden relative">
+      <div className="absolute bottom-0 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-primary-600/5 rounded-full blur-3xl translate-y-1/2 translate-x-1/2" />
 
-      <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-16 sm:mb-20">
-          {/* LOGO + DESCRIPTION */}
-          <div>
-            <Link to="/" className="flex items-center gap-3 mb-8 group">
+      <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12 sm:mb-16 lg:mb-20">
+
+          {/* LOGO */}
+          <div className="min-w-0">
+            <Link to="/" className="flex items-center gap-3 mb-6 sm:mb-8 group">
               <img
                 src="/logo.png"
                 alt="Green Group Kosova"
                 loading="eager"
-                className="h-14 w-14 sm:h-16 sm:w-16 object-contain shrink-0"
+                className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 object-contain shrink-0"
               />
-              <div className="flex flex-col">
-                <span className="font-bold text-xl text-white leading-none">
+
+              <div className="flex flex-col min-w-0">
+                <span className="font-bold text-lg sm:text-xl text-white leading-none truncate">
                   Green Group
                 </span>
-                <span className="text-xs text-primary-400 uppercase tracking-widest">
+                <span className="text-[10px] sm:text-xs text-primary-400 uppercase tracking-widest truncate">
                   Kosova
                 </span>
               </div>
             </Link>
 
-            <p className="text-slate-400 mb-6 text-sm leading-6 max-w-xs sm:max-w-sm">
+            <p className="text-slate-400 mb-5 sm:mb-6 text-sm leading-6 max-w-xs sm:max-w-sm">
               {t.footer.description}
             </p>
 
             <div className="flex gap-4">
-  <a
-    href="https://www.facebook.com/ggkosova"
-    className="text-slate-400 hover:text-white transition-colors"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Facebook"
-  >
-    <Facebook size={20} />
-  </a>
+              <a
+                href="https://www.facebook.com/ggkosova"
+                className="text-slate-400 hover:text-white transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <Facebook size={20} />
+              </a>
 
-  <a
-    href="mailto:ggkosova2014@gmail.com"
-    className="text-slate-400 hover:text-white transition-colors"
-    aria-label="Email"
-  >
-    <Mail size={20} />
-  </a>
+              <a
+                href="mailto:ggkosova2014@gmail.com"
+                className="text-slate-400 hover:text-white transition-colors"
+                aria-label="Email"
+              >
+                <Mail size={20} />
+              </a>
 
-  <a
-  href="https://www.google.com/maps?q=42.4358333,21.4481067"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-slate-400 hover:text-white transition-colors"
-  aria-label="Location"
->
-  <MapPin size={20} />
-</a>
-</div>
+              <a
+                href="https://www.google.com/maps?q=42.4358333,21.4481067"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-white transition-colors"
+                aria-label="Location"
+              >
+                <MapPin size={20} />
+              </a>
+            </div>
           </div>
 
           {/* LINKS */}
           <div>
-            <h4 className="text-white font-semibold mb-4 sm:mb-6 text-sm">
+            <h4 className="text-white font-semibold mb-4 sm:mb-6 text-xs sm:text-sm">
               {t.footer.quickLinksTitle}
             </h4>
+
             <ul className="space-y-2 sm:space-y-3 text-sm text-slate-400">
-              <li>
-                <a href={getSectionHref('home')} className="hover:text-white transition-colors">
-                  {t.footer.home}
-                </a>
-              </li>
-              <li>
-                <a href={getSectionHref('about')} className="hover:text-white transition-colors">
-                  {t.footer.about}
-                </a>
-              </li>
-              <li>
-                <a href={getSectionHref('products')} className="hover:text-white transition-colors">
-                  {t.footer.products}
-                </a>
-              </li>
-              <li>
-                <a href={getSectionHref('process')} className="hover:text-white transition-colors">
-                  {t.footer.process}
-                </a>
-              </li>
-              <li>
-                <a href={getSectionHref('wholesale')} className="hover:text-white transition-colors">
-                  {t.footer.wholesale}
-                </a>
-              </li>
-              <li>
-                <a href={getSectionHref('contact')} className="hover:text-white transition-colors">
-                  {t.footer.contact}
-                </a>
-              </li>
+              {['home', 'about', 'products', 'process', 'wholesale', 'contact'].map((item) => (
+                <li key={item}>
+                  <a
+                    href={getSectionHref(item)}
+                    className="hover:text-white transition-colors break-words"
+                  >
+                    {t.footer[item]}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* PRODUCTS */}
           <div>
-            <h4 className="text-white font-bold mb-6 text-sm">
+            <h4 className="text-white font-bold mb-4 sm:mb-6 text-xs sm:text-sm">
               {t.footer.productsTitle}
             </h4>
-            <ul className="space-y-3 text-sm text-slate-400">
-              <li>{t.footer.freshMushrooms}</li>
-              <li>{t.footer.cannedMushrooms}</li>
-              <li>{t.footer.flowerSubstrate}</li>
+
+            <ul className="space-y-2 sm:space-y-3 text-sm text-slate-400">
+              <li className="break-words">{t.footer.freshMushrooms}</li>
+              <li className="break-words">{t.footer.cannedMushrooms}</li>
+              <li className="break-words">{t.footer.flowerSubstrate}</li>
             </ul>
           </div>
 
           {/* CONTACT */}
           <div>
-            <h4 className="text-white font-bold mb-6 text-sm">
+            <h4 className="text-white font-bold mb-4 sm:mb-6 text-xs sm:text-sm">
               {t.footer.contactTitle}
             </h4>
 
             <div className="space-y-4 text-sm text-slate-400">
               <div>
-                <p className="text-white font-medium mb-1">{t.footer.emailLabel}</p>
-                <p>ggkosova2014@gmail.com</p>
+                <p className="text-white font-medium mb-1">
+                  {t.footer.emailLabel}
+                </p>
+                <p className="break-words">ggkosova2014@gmail.com</p>
               </div>
 
               <div>
-                <p className="text-white font-medium mb-1">{t.footer.phoneLabel}</p>
+                <p className="text-white font-medium mb-1">
+                  {t.footer.phoneLabel}
+                </p>
                 <p>+383 44 844 297</p>
               </div>
 
               <div>
-                <p className="text-white font-medium mb-1">{t.footer.addressLabel}</p>
-                <p>{t.footer.addressValue}</p>
+                <p className="text-white font-medium mb-1">
+                  {t.footer.addressLabel}
+                </p>
+                <p className="break-words">{t.footer.addressValue}</p>
               </div>
 
               <div>
-                <p className="text-white font-medium mb-1">{t.footer.hoursLabel}</p>
-                <p>{t.footer.hoursValue}</p>
+                <p className="text-white font-medium mb-1">
+                  {t.footer.hoursLabel}
+                </p>
+                <p className="break-words">{t.footer.hoursValue}</p>
               </div>
             </div>
           </div>
+
         </div>
 
         {/* BOTTOM */}
-        <div className="border-t border-white/10 pt-6 flex flex-col gap-3 sm:gap-4 sm:flex-row sm:items-center sm:justify-between text-xs sm:text-sm text-slate-500">
+        <div className="border-t border-white/10 pt-5 sm:pt-6 flex flex-col gap-3 sm:gap-4 sm:flex-row sm:items-center sm:justify-between text-xs sm:text-sm text-slate-500">
           <p>© {new Date().getFullYear()} Green Group Kosova</p>
 
           <div className="flex flex-wrap items-center gap-4 sm:gap-6">
@@ -192,12 +186,13 @@ export default function Footer() {
         {showButton && (
           <button
             onClick={scrollToTop}
-            className="fixed bottom-5 right-5 z-50 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary-600 text-white shadow-md shadow-primary-600/30 hover:bg-primary-700 transition-all flex items-center justify-center"
+            className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary-600 text-white shadow-md shadow-primary-600/30 hover:bg-primary-700 transition-all flex items-center justify-center"
             aria-label="Scroll to top"
           >
-            <ArrowUp size={20} />
+            <ArrowUp size={18} />
           </button>
         )}
+
       </div>
     </footer>
   );

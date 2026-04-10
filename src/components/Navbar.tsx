@@ -43,22 +43,24 @@ export default function Navbar() {
     <nav
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled || isLegalPage ? 'glass-nav py-3' : 'bg-transparent py-3 sm:py-4'
+        scrolled || isLegalPage
+          ? 'glass-nav py-3'
+          : 'bg-transparent py-3 sm:py-4'
       )}
     >
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 group">
+      <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2 sm:gap-3 group min-w-0">
           <img
             src="/logo.png"
             alt="Green Group Kosova"
             loading="eager"
-            className="h-11 sm:h-12 lg:h-14 w-auto"
+            className="h-10 sm:h-11 lg:h-12 w-auto flex-shrink-0"
           />
 
-          <div className="flex flex-col">
+          <div className="flex flex-col min-w-0">
             <span
               className={cn(
-                'font-display font-bold text-lg sm:text-xl leading-none tracking-tight',
+                'font-display font-bold text-base sm:text-lg lg:text-xl leading-none tracking-tight truncate',
                 scrolled || isLegalPage ? 'text-slate-900' : 'text-white'
               )}
             >
@@ -67,8 +69,10 @@ export default function Navbar() {
 
             <span
               className={cn(
-                'text-[11px] font-medium tracking-[0.18em] uppercase',
-                scrolled || isLegalPage ? 'text-primary-700' : 'text-primary-200'
+                'text-[10px] sm:text-[11px] font-medium tracking-[0.18em] uppercase truncate',
+                scrolled || isLegalPage
+                  ? 'text-primary-700'
+                  : 'text-primary-200'
               )}
             >
               Kosova
@@ -77,13 +81,13 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+        <div className="hidden lg:flex items-center gap-5 xl:gap-7">
           {navLinks.map((link) => (
             <a
               key={link.key}
               href={getNavHref(link.section)}
               className={cn(
-                'text-sm font-medium transition-colors hover:text-primary-600',
+                'text-sm font-medium transition-colors hover:text-primary-600 whitespace-nowrap',
                 scrolled || isLegalPage
                   ? 'text-slate-600'
                   : 'text-white/90 hover:text-white'
@@ -95,7 +99,7 @@ export default function Navbar() {
 
           <div
             className={cn(
-              'flex items-center gap-2 rounded-full px-2 py-1 backdrop-blur-md',
+              'flex items-center gap-1 rounded-full px-1.5 py-1 backdrop-blur-md',
               scrolled || isLegalPage
                 ? 'border border-slate-200 bg-white'
                 : 'border border-white/20 bg-white/10'
@@ -109,8 +113,8 @@ export default function Navbar() {
                 language === 'al'
                   ? 'bg-white text-slate-900 shadow-sm'
                   : scrolled || isLegalPage
-                    ? 'text-slate-600 hover:text-slate-900'
-                    : 'text-white/80 hover:text-white'
+                  ? 'text-slate-600 hover:text-slate-900'
+                  : 'text-white/80 hover:text-white'
               )}
             >
               AL
@@ -124,8 +128,8 @@ export default function Navbar() {
                 language === 'en'
                   ? 'bg-white text-slate-900 shadow-sm'
                   : scrolled || isLegalPage
-                    ? 'text-slate-600 hover:text-slate-900'
-                    : 'text-white/80 hover:text-white'
+                  ? 'text-slate-600 hover:text-slate-900'
+                  : 'text-white/80 hover:text-white'
               )}
             >
               EN
@@ -135,7 +139,7 @@ export default function Navbar() {
           <a
             href={getNavHref('contact')}
             className={cn(
-              'flex items-center gap-2 px-5 py-2.5 rounded-full font-medium transition-all',
+              'flex items-center gap-2 px-5 py-2.5 rounded-full font-medium transition-all whitespace-nowrap',
               scrolled || isLegalPage
                 ? 'bg-primary-700 text-white hover:bg-primary-800 shadow-md shadow-primary-700/20'
                 : 'bg-white/10 text-white backdrop-blur-md border border-white/20 hover:bg-white/20'
@@ -164,8 +168,8 @@ export default function Navbar() {
                 language === 'al'
                   ? 'bg-white text-slate-900 shadow-sm'
                   : scrolled || isLegalPage
-                    ? 'text-slate-700'
-                    : 'text-white/80'
+                  ? 'text-slate-700'
+                  : 'text-white/80'
               )}
             >
               AL
@@ -179,8 +183,8 @@ export default function Navbar() {
                 language === 'en'
                   ? 'bg-white text-slate-900 shadow-sm'
                   : scrolled || isLegalPage
-                    ? 'text-slate-700'
-                    : 'text-white/80'
+                  ? 'text-slate-700'
+                  : 'text-white/80'
               )}
             >
               EN
@@ -189,7 +193,7 @@ export default function Navbar() {
 
           <button
             className={cn(
-              'p-2 rounded-lg',
+              'p-2.5 rounded-lg',
               scrolled || isLegalPage ? 'text-slate-900' : 'text-white'
             )}
             onClick={() => setIsOpen(!isOpen)}
@@ -208,12 +212,12 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-white border-b border-slate-100 overflow-hidden"
           >
-            <div className="max-w-screen-xl mx-auto px-4 sm:px-6 py-6 flex flex-col gap-4">
+            <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.key}
                   href={getNavHref(link.section)}
-                  className="text-lg font-medium text-slate-600 hover:text-primary-600 px-2 py-1"
+                  className="text-base sm:text-lg font-medium text-slate-700 hover:text-primary-600 px-2 py-3 rounded-lg"
                   onClick={() => setIsOpen(false)}
                 >
                   {t.navbar[link.key]}

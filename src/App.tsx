@@ -5,21 +5,18 @@ import Products from './components/Products';
 import Process from './components/Process';
 import About from './components/About';
 import Wholesale from './components/Wholesale';
-// import AIPlanner from './components/AIPlanner';
-// import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
-
 function RouteScrollManager() {
   const location = useLocation();
 
   useEffect(() => {
     if (location.hash) return;
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'auto' });
   }, [location.pathname, location.hash]);
 
   return null;
@@ -30,8 +27,9 @@ function ScrollToHash() {
 
   useEffect(() => {
     if (location.pathname !== '/') return;
+
     if (!location.hash) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
       return;
     }
 
@@ -40,7 +38,11 @@ function ScrollToHash() {
 
     if (element) {
       setTimeout(() => {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const yOffset = -80;
+        const y =
+          element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+        window.scrollTo({ top: y, behavior: 'smooth' });
       }, 100);
     }
   }, [location]);
@@ -50,19 +52,19 @@ function ScrollToHash() {
 
 function HomePage() {
   return (
-    <div className="min-h-screen bg-white selection:bg-primary-100 selection:text-primary-900">
+    <div className="min-h-screen w-full overflow-x-hidden bg-white selection:bg-primary-100 selection:text-primary-900">
       <ScrollToHash />
       <Navbar />
-      <main>
+
+      <main className="w-full overflow-x-hidden">
         <Hero />
         <About />
         <Products />
         <Process />
         <Wholesale />
-        {/* <AIPlanner /> */}
-        {/* <Testimonials /> */}
         <Contact />
       </main>
+
       <Footer />
     </div>
   );
