@@ -22,7 +22,7 @@ export default function TermsConditions() {
         },
         {
           title: '2. Use of Website',
-          body: 'This website is provided for informational and business communication purposes. You may use it only for lawful purposes and in a way that does not harm the website, the business, or other users.',
+          body: 'This website is provided strictly for informational and business communication purposes related to our products, services, and potential cooperation.',
         },
         {
           title: '3. Intellectual Property',
@@ -34,7 +34,7 @@ export default function TermsConditions() {
         },
         {
           title: '5. Business Information',
-          body: 'We aim to keep website information accurate and up to date. However, product details, availability, business terms, and communication outcomes may change without prior notice.',
+          body: 'We aim to keep website information accurate and up to date. However, product specifications, availability, and business terms may vary depending on supply conditions and direct agreements.',
         },
         {
           title: '6. Limitation of Liability',
@@ -75,7 +75,7 @@ export default function TermsConditions() {
         },
         {
           title: '2. Përdorimi i Faqes',
-          body: 'Kjo faqe ofrohet për qëllime informative dhe komunikimi biznesor. Ju mund ta përdorni vetëm për qëllime të ligjshme dhe në mënyrë që të mos dëmtoni faqen, biznesin ose përdoruesit e tjerë.',
+          body: 'Kjo faqe ofrohet vetëm për qëllime informative dhe komunikimi biznesor në lidhje me produktet, shërbimet dhe bashkëpunimet e mundshme. Ju mund ta përdorni vetëm për qëllime të ligjshme dhe në mënyrë që të mos dëmtoni faqen, biznesin ose përdoruesit e tjerë.',
         },
         {
           title: '3. Pronësia Intelektuale',
@@ -87,7 +87,7 @@ export default function TermsConditions() {
         },
         {
           title: '5. Informacioni Biznesor',
-          body: 'Ne synojmë ta mbajmë informacionin e faqes të saktë dhe të përditësuar. Megjithatë, detajet e produkteve, disponueshmëria, kushtet e bashkëpunimit dhe rezultatet e komunikimit mund të ndryshojnë pa njoftim paraprak.',
+          body: 'Ne synojmë ta mbajmë informacionin e faqes të saktë dhe të përditësuar. Megjithatë, specifikimet e produkteve, disponueshmëria dhe kushtet e bashkëpunimit mund të ndryshojnë në varësi të furnizimit dhe marrëveshjeve direkte.',
         },
         {
           title: '6. Kufizimi i Përgjegjësisë',
@@ -95,7 +95,7 @@ export default function TermsConditions() {
         },
         {
           title: '7. Shërbimet dhe Lidhjet e Jashtme',
-          body: 'Faqja jonë mund të përdorë shërbime të palëve të treta ose të përmbajë lidhje drejt platformave të jashtme për komunikim ose analitikë. Ne nuk mbajmë përgjegjësi për përmbajtjen, politikat ose disponueshmërinë e këtyre shërbimeve.',
+          body: 'Faqja jonë mund të përdorë shërbime të palëve të treta (si email, mjete komunikimi ose analitikë) ose të përmbajë lidhje drejt platformave të jashtme.',
         },
         {
           title: '8. Ndryshimet në Këto Kushte',
@@ -122,7 +122,7 @@ export default function TermsConditions() {
 
       <main className="pt-32 pb-20">
         <section className="px-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             <Link
               to="/"
               className="inline-flex items-center gap-2 text-primary-700 hover:text-primary-800 font-medium transition-colors mb-8"
@@ -131,13 +131,13 @@ export default function TermsConditions() {
               {content.back}
             </Link>
 
-            <div className="rounded-3xl border border-slate-200 bg-white shadow-sm p-8 md:p-12">
+            <div className="rounded-3xl border border-slate-200 bg-white shadow-sm p-6 sm:p-8 md:p-10">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-primary-100 flex items-center justify-center">
                   <FileText className="text-primary-700" size={24} />
                 </div>
                 <div>
-                  <h1 className="text-3xl md:text-4xl font-bold text-slate-900">
+                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">
                     {content.title}
                   </h1>
                   <p className="text-slate-500 mt-1">{content.company}</p>
@@ -149,7 +149,7 @@ export default function TermsConditions() {
               <div className="space-y-10">
                 {content.sections.map((section) => (
                   <section key={section.title}>
-                    <h2 className="text-2xl font-semibold text-slate-900 mb-3">
+                    <h2 className="text-xl sm:text-2xl font-semibold text-slate-900 mb-3">
                       {section.title}
                     </h2>
                     <p className="text-slate-600 leading-7">{section.body}</p>
@@ -157,21 +157,43 @@ export default function TermsConditions() {
                     {section.title.startsWith('9.') && (
                       <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 text-slate-700 space-y-2 mt-4">
                         <p>
-                          <span className="font-semibold text-slate-900">{content.labels.company}:</span>{' '}
-                          Green Group Kosova
-                        </p>
-                        <p>
-                          <span className="font-semibold text-slate-900">{content.labels.email}:</span>{' '}
-                          ggkosova2014@gmail.com
-                        </p>
-                        <p>
-                          <span className="font-semibold text-slate-900">{content.labels.phone}:</span>{' '}
-                          +383 44 844 297
-                        </p>
-                        <p>
-                          <span className="font-semibold text-slate-900">{content.labels.address}:</span>{' '}
-                          {content.address}
-                        </p>
+  <span className="font-semibold text-slate-900">{content.labels.company}:</span>{' '}
+  <Link to="/" className="hover:text-primary-700 transition-colors">
+    Green Group Kosova
+  </Link>
+</p>
+
+<p>
+  <span className="font-semibold text-slate-900">{content.labels.email}:</span>{' '}
+  <a
+    href="mailto:ggkosova2014@gmail.com"
+    className="hover:text-primary-700 transition-colors"
+  >
+    ggkosova2014@gmail.com
+  </a>
+</p>
+
+<p>
+  <span className="font-semibold text-slate-900">{content.labels.phone}:</span>{' '}
+  <a
+    href="tel:+38344844297"
+    className="hover:text-primary-700 transition-colors"
+  >
+    +383 44 844 297
+  </a>
+</p>
+
+<p>
+  <span className="font-semibold text-slate-900">{content.labels.address}:</span>{' '}
+  <a
+    href="https://www.google.com/maps?q=42.4358333,21.4481067"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-primary-700 transition-colors"
+  >
+    {content.address}
+  </a>
+</p>
                       </div>
                     )}
                   </section>

@@ -13,8 +13,8 @@ export default function PrivacyPolicy() {
       title: 'Privacy Policy',
       company: 'Green Group Kosova',
       intro:
-        'This Privacy Policy explains how Green Group Kosova collects, uses, and protects your information when you use our website or contact us for business purposes.',
-      updated: 'Last updated: April 10, 2026',
+        'This Privacy Policy outlines how Green Group Kosova collects, uses, and safeguards your information when you interact with our website or contact us for business inquiries and cooperation.This Privacy Policy outlines how Green Group Kosova collects, uses, and safeguards your information when you interact with our website or contact us for business inquiries and cooperation.',
+      updated: 'Last updated: April 11, 2026',
       sections: [
         {
           title: '1. Information We Collect',
@@ -22,14 +22,14 @@ export default function PrivacyPolicy() {
           bullets: ['Name', 'Email address', 'Phone number', 'Message content', 'Business inquiry details'],
         },
         {
-          title: '2. How We Use Your Information',
-          body: 'We use the information you provide only for legitimate business purposes related to communication, customer support, and service improvement.',
-          bullets: [
-            'Respond to inquiries and contact requests',
-            'Communicate regarding products, wholesale cooperation, or supply requests',
-            'Improve our website and communication process',
-          ],
-        },
+  title: '2. How We Use Your Information',
+  body: 'We use the information you provide strictly for legitimate business purposes related to communication, customer support, and service improvement. We do not use your information for marketing automation or unsolicited communication.',
+  bullets: [
+    'Respond to inquiries and contact requests',
+    'Communicate regarding products, wholesale cooperation, or supply requests',
+    'Improve our website and communication process',
+  ],
+},
         {
           title: '3. Data Sharing',
           body: 'We do not sell or rent your personal information. We may use trusted third-party services, such as email or website tools, only when necessary to operate our business communication and website functionality.',
@@ -73,14 +73,14 @@ export default function PrivacyPolicy() {
           bullets: ['Emri', 'Adresa e emailit', 'Numri i telefonit', 'Përmbajtja e mesazhit', 'Detajet e kërkesës biznesore'],
         },
         {
-          title: '2. Si e Përdorim Informacionin Tuaj',
-          body: 'Informacionin që na jepni e përdorim vetëm për qëllime legjitime biznesore që lidhen me komunikimin, mbështetjen për klientët dhe përmirësimin e shërbimeve.',
-          bullets: [
-            'T’u përgjigjemi pyetjeve dhe kërkesave për kontakt',
-            'Të komunikojmë për produktet, bashkëpunimin me shumicë ose kërkesat për furnizim',
-            'Të përmirësojmë faqen dhe procesin tonë të komunikimit',
-          ],
-        },
+  title: '2. Si e Përdorim Informacionin Tuaj',
+  body: 'Informacionin që na jepni e përdorim vetëm për qëllime legjitime biznesore që lidhen me komunikimin, mbështetjen për klientët dhe përmirësimin e shërbimeve. Ne nuk përdorim të dhënat tuaja për marketing automatik ose komunikime të padëshiruara.',
+  bullets: [
+    'T’u përgjigjemi pyetjeve dhe kërkesave për kontakt',
+    'Të komunikojmë për produktet, bashkëpunimin me shumicë ose kërkesat për furnizim',
+    'Të përmirësojmë faqen dhe procesin tonë të komunikimit',
+  ],
+},
         {
           title: '3. Ndarja e të Dhënave',
           body: 'Ne nuk shesim dhe nuk japim me qira informacionin tuaj personal. Mund të përdorim shërbime të besueshme të palëve të treta, si mjete emaili ose mjete të faqes, vetëm kur janë të nevojshme për funksionimin e komunikimit biznesor dhe faqes sonë.',
@@ -118,7 +118,7 @@ export default function PrivacyPolicy() {
 
       <main className="pt-32 pb-20">
         <section className="px-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             <Link
               to="/"
               className="inline-flex items-center gap-2 text-primary-700 hover:text-primary-800 font-medium transition-colors mb-8"
@@ -127,13 +127,13 @@ export default function PrivacyPolicy() {
               {content.back}
             </Link>
 
-            <div className="rounded-3xl border border-slate-200 bg-white shadow-sm p-8 md:p-12">
+            <div className="rounded-3xl border border-slate-200 bg-white shadow-sm p-6 sm:p-8 md:p-10">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-primary-100 flex items-center justify-center">
                   <ShieldCheck className="text-primary-700" size={24} />
                 </div>
                 <div>
-                  <h1 className="text-3xl md:text-4xl font-bold text-slate-900">
+                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">
                     {content.title}
                   </h1>
                   <p className="text-slate-500 mt-1">{content.company}</p>
@@ -145,7 +145,7 @@ export default function PrivacyPolicy() {
               <div className="space-y-10">
                 {content.sections.map((section) => (
                   <section key={section.title}>
-                    <h2 className="text-2xl font-semibold text-slate-900 mb-3">
+                    <h2 className="text-xl sm:text-2xl font-semibold text-slate-900 mb-3">
                       {section.title}
                     </h2>
                     <p className="text-slate-600 leading-7 mb-4">{section.body}</p>
@@ -161,20 +161,42 @@ export default function PrivacyPolicy() {
                     {section.title.startsWith('7.') && (
                       <div className="rounded-2xl bg-slate-50 border border-slate-200 p-5 text-slate-700 space-y-2 mt-4">
                         <p>
-                          <span className="font-semibold text-slate-900">{content.labels.company}:</span>{' '}
-                          Green Group Kosova
-                        </p>
+  <span className="font-semibold text-slate-900">{content.labels.company}:</span>{' '}
+  <Link
+    to="/"
+    className="hover:text-primary-700 transition-colors"
+  >
+    Green Group Kosova
+  </Link>
+</p>
                         <p>
                           <span className="font-semibold text-slate-900">{content.labels.email}:</span>{' '}
-                          ggkosova2014@gmail.com
+                          <a
+  href="mailto:ggkosova2014@gmail.com"
+  className="hover:text-primary-700 transition-colors"
+>
+  ggkosova2014@gmail.com
+</a>
                         </p>
                         <p>
-                          <span className="font-semibold text-slate-900">{content.labels.phone}:</span>{' '}
-                          +383 44 844 297
-                        </p>
+  <span className="font-semibold text-slate-900">{content.labels.phone}:</span>{' '}
+  <a
+    href="tel:+38344844297"
+    className="hover:text-primary-700 transition-colors"
+  >
+    +383 44 844 297
+  </a>
+</p>
                         <p>
                           <span className="font-semibold text-slate-900">{content.labels.address}:</span>{' '}
-                          {content.address}
+                          <a
+  href="https://www.google.com/maps?q=42.4358333,21.4481067"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover:text-primary-700 transition-colors"
+>
+  {content.address}
+</a>
                         </p>
                       </div>
                     )}

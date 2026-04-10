@@ -1,4 +1,4 @@
-import { ShoppingBag, Package, Truck, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import freshMushroomsImg from "../Assets/images/fresh-mushrooms.png";
 import CannedMushroomsImg from "../Assets/images/canned-mushrooms.png";
@@ -16,7 +16,6 @@ export default function Products() {
     description: t.products.freshDescription,
     image: freshMushroomsImg,
     benefits: t.products.freshBenefits,
-    icon: <ShoppingBag className="text-primary-600" size={24} />,
   },
   {
     id: 'canned-mushrooms',
@@ -24,7 +23,6 @@ export default function Products() {
     description: t.products.cannedDescription,
     image: CannedMushroomsImg,
     benefits: t.products.cannedBenefits,
-    icon: <ShoppingBag className="text-primary-600" size={24} />,
   },
   {
     id: 'wholesale-supply',
@@ -32,7 +30,6 @@ export default function Products() {
     description: t.products.substrateDescription,
     image: FlowerSubstrateImg,
     benefits: t.products.substrateBenefits,
-    icon: <ShoppingBag className="text-primary-600" size={24} />,
   },
 ];
 
@@ -53,7 +50,7 @@ export default function Products() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-slate-900 mt-4 mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mt-4 mb-6"
           >
             {t.products.title}
           </motion.h2>
@@ -62,13 +59,13 @@ export default function Products() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-slate-600"
+            className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto"
           >
             {t.products.description}
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
           {products.map((product, index) => (
             <motion.div
               key={product.id}
@@ -76,21 +73,18 @@ export default function Products() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100 flex flex-col h-full"
+              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 flex flex-col h-full"
             >
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-56 sm:h-60 lg:h-64 overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-lg">
-                  {product.icon}
-                </div>
               </div>
-              <div className="p-8 flex flex-col flex-1">
-                <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-primary-700 transition-colors">
+              <div className="p-6 sm:p-8 flex flex-col flex-1">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 group-hover:text-primary-700 transition-colors">
                   {product.title}
                 </h3>
                 <p className="text-slate-600 mb-6 leading-relaxed">
@@ -106,7 +100,7 @@ export default function Products() {
                 </ul>
                 <a
   href="#contact"
-  className="mt-auto flex items-center justify-between w-full p-4 rounded-2xl bg-slate-50 group-hover:bg-primary-50 text-slate-900 group-hover:text-primary-700 font-semibold transition-all"
+  className="mt-auto flex items-center justify-between w-full px-4 py-3 rounded-xl bg-slate-50 group-hover:bg-primary-50 text-slate-900 group-hover:text-primary-700 font-semibold transition-all"
 >
   <span>{t.products.more}</span>
   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />

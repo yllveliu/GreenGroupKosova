@@ -43,22 +43,22 @@ export default function Navbar() {
     <nav
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled || isLegalPage ? 'glass-nav py-3' : 'bg-transparent py-5'
+        scrolled || isLegalPage ? 'glass-nav py-3' : 'bg-transparent py-3 sm:py-4'
       )}
     >
-      <div className="container-custom flex items-center justify-between">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
           <img
             src="/logo.png"
             alt="Green Group Kosova"
             loading="eager"
-            className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+            className="h-11 sm:h-12 lg:h-14 w-auto"
           />
 
           <div className="flex flex-col">
             <span
               className={cn(
-                'font-display font-bold text-xl leading-none tracking-tight',
+                'font-display font-bold text-lg sm:text-xl leading-none tracking-tight',
                 scrolled || isLegalPage ? 'text-slate-900' : 'text-white'
               )}
             >
@@ -67,7 +67,7 @@ export default function Navbar() {
 
             <span
               className={cn(
-                'text-[10px] font-medium tracking-[0.2em] uppercase',
+                'text-[11px] font-medium tracking-[0.18em] uppercase',
                 scrolled || isLegalPage ? 'text-primary-700' : 'text-primary-200'
               )}
             >
@@ -77,7 +77,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
           {navLinks.map((link) => (
             <a
               key={link.key}
@@ -160,7 +160,7 @@ export default function Navbar() {
               type="button"
               onClick={() => setLanguage('al')}
               className={cn(
-                'px-2 py-1 rounded-full text-[10px] font-semibold transition-all',
+                'px-2.5 py-1 rounded-full text-xs font-semibold transition-all',
                 language === 'al'
                   ? 'bg-white text-slate-900 shadow-sm'
                   : scrolled || isLegalPage
@@ -175,7 +175,7 @@ export default function Navbar() {
               type="button"
               onClick={() => setLanguage('en')}
               className={cn(
-                'px-2 py-1 rounded-full text-[10px] font-semibold transition-all',
+                'px-2.5 py-1 rounded-full text-xs font-semibold transition-all',
                 language === 'en'
                   ? 'bg-white text-slate-900 shadow-sm'
                   : scrolled || isLegalPage
@@ -208,7 +208,7 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-white border-b border-slate-100 overflow-hidden"
           >
-            <div className="container-custom py-6 flex flex-col gap-4">
+            <div className="max-w-screen-xl mx-auto px-4 sm:px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.key}

@@ -50,7 +50,7 @@ export default function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-5xl font-bold text-slate-900 mt-4"
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mt-4"
             >
               {t.process.title}{' '}
               <span className="text-primary-600">{t.process.titleHighlight}</span>
@@ -61,7 +61,7 @@ export default function Process() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="text-lg text-slate-600 max-w-md lg:text-right"
+            className="text-base sm:text-lg text-slate-600 max-w-md lg:text-right"
           >
             {t.process.description}
           </motion.p>
@@ -71,7 +71,7 @@ export default function Process() {
           {/* Connection Line (Desktop) */}
           <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2 z-0"></div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 relative z-10">
             {stepAssets.map((step, index) => {
   const titles = [
     t.process.cultivationTitle,
@@ -97,24 +97,24 @@ export default function Process() {
                 className="group"
               >
                 <div className="relative mb-8">
-                  <div className="aspect-square rounded-3xl overflow-hidden shadow-lg mb-6">
+                  <div className="aspect-square rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
                     <img
                       src={step.image}
-                      alt={step.title}
+                      alt={titles[index]}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="absolute inset-0 bg-primary-900/20 group-hover:bg-primary-900/0 transition-colors"></div>
+                    <div className="absolute inset-0 bg-black/10 lg:bg-primary-900/20 lg:group-hover:bg-primary-900/0 transition-colors"></div>
                   </div>
-                  <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-primary-600 lg:group-hover:bg-primary-600 lg:group-hover:text-white transition-all duration-300 z-20">
                     {step.icon}
                   </div>
-                  <div className="absolute -top-4 -right-4 w-10 h-10 bg-primary-700 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+                  <div className="absolute top-3 right-3 w-10 h-10 bg-primary-700 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg z-20">
                     {index + 1}
                   </div>
                 </div>
                 <div className="text-center mt-10">
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{titles[index]}</h3>
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-3">{titles[index]}</h3>
                   <p className="text-slate-600 text-sm leading-relaxed">{descriptions[index]}</p>
                 </div>
               </motion.div>
@@ -128,7 +128,7 @@ export default function Process() {
   whileInView={{ opacity: 1, y: 0 }}
   viewport={{ once: true }}
   transition={{ delay: 0.6 }}
-  className="mt-24 p-8 md:p-10 lg:p-12 bg-primary-950 rounded-[2.5rem] relative overflow-hidden"
+  className="mt-16 sm:mt-20 p-6 sm:p-8 md:p-10 lg:p-12 bg-primary-950 rounded-3xl relative overflow-hidden"
 >
   <div className="absolute top-0 right-0 w-64 h-64 bg-primary-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
 

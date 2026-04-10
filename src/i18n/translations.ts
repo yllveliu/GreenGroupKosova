@@ -180,6 +180,13 @@ export const translations = {
         addressValue: 'Livoç i Ultë, Gjilan',
         hoursValue: '07:00 – 15:00',
     },
+        validation: {
+  nameRequired: "Ju lutem plotësoni emrin",
+  emailInvalid: "Ju lutem vendosni email valid",
+  messageRequired: "Ju lutem shkruani një mesazh",
+  popupTitle: "Forma do të jetë së shpejti aktive",
+  popupText: "Për momentin, ju lutem na kontaktoni me telefon ose email.",
+},
   },
 
   en: {
@@ -361,5 +368,12 @@ export const translations = {
         addressValue: 'Livoç i Ultë, Gjilan',
         hoursValue: '07:00 – 15:00',
     },
+    validation: {
+  nameRequired: "Please enter your name",
+  emailInvalid: "Please enter a valid email",
+  messageRequired: "Please write a message",
+  popupTitle: "Form will be available soon",
+  popupText: "For now, please contact us via phone or email.",
+},
   },
 } as const;
