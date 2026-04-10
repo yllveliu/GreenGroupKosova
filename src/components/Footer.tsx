@@ -1,10 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Facebook, Instagram, Linkedin, ArrowUp } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Footer() {
   const { t } = useLanguage();
   const [showButton, setShowButton] = useState(false);
+  const location = useLocation();
+
+  const isHomePage = location.pathname === '/';
+
+  const getSectionHref = (section: string) => {
+    return isHomePage ? `#${section}` : `/#${section}`;
+  };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -27,24 +35,24 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           {/* LOGO + DESCRIPTION */}
           <div>
-            <a href="#home" className="flex items-center gap-3 mb-8 group">
-  <img
-    src="/logo.png"
-    alt="Green Group Kosova"
-    loading="eager"
-    className="h-16 w-16 object-contain shrink-0"
-  />
-  <div className="flex flex-col">
-    <span className="font-bold text-xl text-white leading-none">
-      Green Group
-    </span>
-    <span className="text-xs text-primary-400 uppercase tracking-widest">
-      Kosova
-    </span>
-  </div>
-</a>
+            <Link to="/" className="flex items-center gap-3 mb-8 group">
+              <img
+                src="/logo.png"
+                alt="Green Group Kosova"
+                loading="eager"
+                className="h-16 w-16 object-contain shrink-0"
+              />
+              <div className="flex flex-col">
+                <span className="font-bold text-xl text-white leading-none">
+                  Green Group
+                </span>
+                <span className="text-xs text-primary-400 uppercase tracking-widest">
+                  Kosova
+                </span>
+              </div>
+            </Link>
 
-            <p className="text-slate-400 mb-6 text-sm">
+            <p className="text-slate-400 mb-6 text-sm leading-7 max-w-sm">
               {t.footer.description}
             </p>
 
@@ -54,18 +62,23 @@ export default function Footer() {
                 className="text-slate-400 hover:text-white transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Facebook"
               >
                 <Facebook size={20} />
               </a>
+
               <a
                 href="#"
                 className="text-slate-400 hover:text-white transition-colors"
+                aria-label="Instagram"
               >
                 <Instagram size={20} />
               </a>
+
               <a
                 href="#"
                 className="text-slate-400 hover:text-white transition-colors"
+                aria-label="LinkedIn"
               >
                 <Linkedin size={20} />
               </a>
@@ -78,12 +91,36 @@ export default function Footer() {
               {t.footer.quickLinksTitle}
             </h4>
             <ul className="space-y-3 text-sm text-slate-400">
-              <li><a href="#home">{t.footer.home}</a></li>
-              <li><a href="#about">{t.footer.about}</a></li>
-              <li><a href="#products">{t.footer.products}</a></li>
-              <li><a href="#process">{t.footer.process}</a></li>
-              <li><a href="#wholesale">{t.footer.wholesale}</a></li>
-              <li><a href="#contact">{t.footer.contact}</a></li>
+              <li>
+                <a href={getSectionHref('home')} className="hover:text-white transition-colors">
+                  {t.footer.home}
+                </a>
+              </li>
+              <li>
+                <a href={getSectionHref('about')} className="hover:text-white transition-colors">
+                  {t.footer.about}
+                </a>
+              </li>
+              <li>
+                <a href={getSectionHref('products')} className="hover:text-white transition-colors">
+                  {t.footer.products}
+                </a>
+              </li>
+              <li>
+                <a href={getSectionHref('process')} className="hover:text-white transition-colors">
+                  {t.footer.process}
+                </a>
+              </li>
+              <li>
+                <a href={getSectionHref('wholesale')} className="hover:text-white transition-colors">
+                  {t.footer.wholesale}
+                </a>
+              </li>
+              <li>
+                <a href={getSectionHref('contact')} className="hover:text-white transition-colors">
+                  {t.footer.contact}
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -96,7 +133,7 @@ export default function Footer() {
               <li>{t.footer.freshMushrooms}</li>
               <li>{t.footer.cannedMushrooms}</li>
               <li>{t.footer.flowerSubstrate}</li>
-              <li>{t.footer.businessSupply}</li>
+              {/* <li>{t.footer.businessSupply}</li> */}
             </ul>
           </div>
 
@@ -106,24 +143,24 @@ export default function Footer() {
               {t.footer.contactTitle}
             </h4>
 
-            <div className="space-y-3 text-sm text-slate-400">
+            <div className="space-y-4 text-sm text-slate-400">
               <div>
-                <p className="text-white">{t.footer.emailLabel}</p>
+                <p className="text-white font-medium mb-1">{t.footer.emailLabel}</p>
                 <p>ggkosova2014@gmail.com</p>
               </div>
 
               <div>
-                <p className="text-white">{t.footer.phoneLabel}</p>
+                <p className="text-white font-medium mb-1">{t.footer.phoneLabel}</p>
                 <p>+383 44 844 297</p>
               </div>
 
               <div>
-                <p className="text-white">{t.footer.addressLabel}</p>
+                <p className="text-white font-medium mb-1">{t.footer.addressLabel}</p>
                 <p>{t.footer.addressValue}</p>
               </div>
 
               <div>
-                <p className="text-white">{t.footer.hoursLabel}</p>
+                <p className="text-white font-medium mb-1">{t.footer.hoursLabel}</p>
                 <p>{t.footer.hoursValue}</p>
               </div>
             </div>
@@ -131,8 +168,24 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM */}
-        <div className="border-t border-white/10 pt-6 flex justify-between items-center text-sm text-slate-500">
+        <div className="border-t border-white/10 pt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-sm text-slate-500">
           <p>© {new Date().getFullYear()} Green Group Kosova</p>
+
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            <Link
+              to="/privacy-policy"
+              className="hover:text-white transition-colors"
+            >
+              Privacy Policy
+            </Link>
+
+            <Link
+              to="/terms-conditions"
+              className="hover:text-white transition-colors"
+            >
+              Terms & Conditions
+            </Link>
+          </div>
         </div>
 
         {showButton && (

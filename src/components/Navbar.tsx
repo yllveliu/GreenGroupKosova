@@ -3,26 +3,38 @@ import { Menu, X, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';
 import { useLanguage } from '../context/LanguageContext';
+import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
-  { key: 'home', href: '#home' },
-  { key: 'about', href: '#about' },
-  { key: 'products', href: '#products' },
-  { key: 'process', href: '#process' },
-  { key: 'wholesale', href: '#wholesale' },
-  { key: 'contact', href: '#contact' },
+  { key: 'home', section: 'home' },
+  { key: 'about', section: 'about' },
+  { key: 'products', section: 'products' },
+  { key: 'process', section: 'process' },
+  { key: 'wholesale', section: 'wholesale' },
+  { key: 'contact', section: 'contact' },
 ] as const;
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { t, language, setLanguage } = useLanguage();
+  const location = useLocation();
+
+  const isHomePage = location.pathname === '/';
+  const isLegalPage =
+    location.pathname === '/privacy-policy' ||
+    location.pathname === '/terms-conditions';
+
+  const getNavHref = (section: string) => {
+    return isHomePage ? `#${section}` : `/#${section}`;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -31,11 +43,11 @@ export default function Navbar() {
     <nav
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled ? 'glass-nav py-3' : 'bg-transparent py-5'
+        scrolled || isLegalPage ? 'glass-nav py-3' : 'bg-transparent py-5'
       )}
     >
       <div className="container-custom flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group">
           <img
             src="/logo.png"
             alt="Green Group Kosova"
@@ -47,7 +59,7 @@ export default function Navbar() {
             <span
               className={cn(
                 'font-display font-bold text-xl leading-none tracking-tight',
-                scrolled ? 'text-slate-900' : 'text-white'
+                scrolled || isLegalPage ? 'text-slate-900' : 'text-white'
               )}
             >
               Green Group
@@ -56,38 +68,47 @@ export default function Navbar() {
             <span
               className={cn(
                 'text-[10px] font-medium tracking-[0.2em] uppercase',
-                scrolled ? 'text-primary-700' : 'text-primary-200'
+                scrolled || isLegalPage ? 'text-primary-700' : 'text-primary-200'
               )}
             >
               Kosova
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.key}
-              href={link.href}
+              href={getNavHref(link.section)}
               className={cn(
                 'text-sm font-medium transition-colors hover:text-primary-600',
-                scrolled ? 'text-slate-600' : 'text-white/90 hover:text-white'
+                scrolled || isLegalPage
+                  ? 'text-slate-600'
+                  : 'text-white/90 hover:text-white'
               )}
             >
               {t.navbar[link.key]}
             </a>
           ))}
 
-          <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-2 py-1">
+          <div
+            className={cn(
+              'flex items-center gap-2 rounded-full px-2 py-1 backdrop-blur-md',
+              scrolled || isLegalPage
+                ? 'border border-slate-200 bg-white'
+                : 'border border-white/20 bg-white/10'
+            )}
+          >
             <button
               type="button"
               onClick={() => setLanguage('al')}
               className={cn(
                 'px-3 py-1 rounded-full text-xs font-semibold transition-all',
                 language === 'al'
-                  ? 'bg-white text-slate-900'
-                  : scrolled
+                  ? 'bg-white text-slate-900 shadow-sm'
+                  : scrolled || isLegalPage
                     ? 'text-slate-600 hover:text-slate-900'
                     : 'text-white/80 hover:text-white'
               )}
@@ -101,8 +122,8 @@ export default function Navbar() {
               className={cn(
                 'px-3 py-1 rounded-full text-xs font-semibold transition-all',
                 language === 'en'
-                  ? 'bg-white text-slate-900'
-                  : scrolled
+                  ? 'bg-white text-slate-900 shadow-sm'
+                  : scrolled || isLegalPage
                     ? 'text-slate-600 hover:text-slate-900'
                     : 'text-white/80 hover:text-white'
               )}
@@ -112,10 +133,10 @@ export default function Navbar() {
           </div>
 
           <a
-            href="#contact"
+            href={getNavHref('contact')}
             className={cn(
               'flex items-center gap-2 px-5 py-2.5 rounded-full font-medium transition-all',
-              scrolled
+              scrolled || isLegalPage
                 ? 'bg-primary-700 text-white hover:bg-primary-800 shadow-md shadow-primary-700/20'
                 : 'bg-white/10 text-white backdrop-blur-md border border-white/20 hover:bg-white/20'
             )}
@@ -127,16 +148,24 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <div className="lg:hidden flex items-center gap-2">
-          {/* Language Switcher Mobile */}
-          <div className="flex items-center gap-1 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-1 py-1">
+          <div
+            className={cn(
+              'flex items-center gap-1 rounded-full px-1 py-1 backdrop-blur-md',
+              scrolled || isLegalPage
+                ? 'border border-slate-200 bg-white'
+                : 'border border-white/20 bg-white/10'
+            )}
+          >
             <button
               type="button"
               onClick={() => setLanguage('al')}
               className={cn(
-                'px-2 py-1 rounded-full text-[10px] font-semibold',
+                'px-2 py-1 rounded-full text-[10px] font-semibold transition-all',
                 language === 'al'
-                  ? 'bg-white text-slate-900'
-                  : 'text-slate-700'
+                  ? 'bg-white text-slate-900 shadow-sm'
+                  : scrolled || isLegalPage
+                    ? 'text-slate-700'
+                    : 'text-white/80'
               )}
             >
               AL
@@ -146,21 +175,22 @@ export default function Navbar() {
               type="button"
               onClick={() => setLanguage('en')}
               className={cn(
-                'px-2 py-1 rounded-full text-[10px] font-semibold',
+                'px-2 py-1 rounded-full text-[10px] font-semibold transition-all',
                 language === 'en'
-                  ? 'bg-white text-slate-900'
-                  : 'text-slate-700'
+                  ? 'bg-white text-slate-900 shadow-sm'
+                  : scrolled || isLegalPage
+                    ? 'text-slate-700'
+                    : 'text-white/80'
               )}
             >
               EN
             </button>
           </div>
 
-          {/* Hamburger */}
           <button
             className={cn(
               'p-2 rounded-lg',
-              scrolled ? 'text-slate-900' : 'text-white'
+              scrolled || isLegalPage ? 'text-slate-900' : 'text-white'
             )}
             onClick={() => setIsOpen(!isOpen)}
           >
@@ -182,7 +212,7 @@ export default function Navbar() {
               {navLinks.map((link) => (
                 <a
                   key={link.key}
-                  href={link.href}
+                  href={getNavHref(link.section)}
                   className="text-lg font-medium text-slate-600 hover:text-primary-600 px-2 py-1"
                   onClick={() => setIsOpen(false)}
                 >
@@ -191,7 +221,7 @@ export default function Navbar() {
               ))}
 
               <a
-                href="#contact"
+                href={getNavHref('contact')}
                 className="flex items-center justify-center gap-2 w-full bg-primary-700 text-white py-4 rounded-xl font-semibold mt-2"
                 onClick={() => setIsOpen(false)}
               >

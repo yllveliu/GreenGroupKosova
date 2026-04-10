@@ -124,35 +124,39 @@ export default function Process() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="mt-24 p-8 md:p-12 bg-primary-950 rounded-[2.5rem] relative overflow-hidden"
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ delay: 0.6 }}
+  className="mt-24 p-8 md:p-10 lg:p-12 bg-primary-950 rounded-[2.5rem] relative overflow-hidden"
+>
+  <div className="absolute top-0 right-0 w-64 h-64 bg-primary-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+
+  <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-10">
+    <div className="w-full max-w-xl">
+      <h3 className="text-3xl font-bold text-white mb-4">
+        {t.process.ctaTitle}
+      </h3>
+      <p className="text-primary-100/80 text-base md:text-lg leading-8">
+        {t.process.ctaDescription}
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full lg:max-w-xl">
+      {t.process.ctaItems.map((item) => (
+        <div
+          key={item}
+          className="flex items-start gap-3 text-white font-medium bg-white/5 px-4 py-4 rounded-xl border border-white/10 min-w-0"
         >
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="max-w-xl">
-              <h3 className="text-3xl font-bold text-white mb-4">{t.process.ctaTitle}</h3>
-              <p className="text-primary-100/80 text-lg">
-                {t.process.ctaDescription}
-              </p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full md:w-auto">
-              {t.process.ctaItems.map((item) => (
-  <div
-    key={item}
-    className="flex items-start gap-2 text-white font-medium bg-white/5 px-4 py-3 rounded-xl border border-white/10"
-  >
-    <CheckCircle2 size={18} className="text-primary-400 shrink-0" />
-    <span className="flex-1 text-sm sm:text-base break-words leading-snug">
-      {item}
-    </span>
+          <CheckCircle2 size={18} className="text-primary-400 shrink-0 mt-0.5" />
+          <span className="flex-1 text-sm md:text-base break-words leading-6">
+            {item}
+          </span>
+        </div>
+      ))}
+    </div>
   </div>
-))}
-            </div>
-          </div>
-        </motion.div>
+</motion.div>
       </div>
     </section>
   );
