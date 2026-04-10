@@ -109,7 +109,7 @@ const stats = [
                 {t.about.paragraph2}
               </p>
               <p>
-                {t.about.paragraph2}
+                {t.about.paragraph3}
               </p>
             </motion.div>
 

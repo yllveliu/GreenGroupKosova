@@ -77,7 +77,7 @@ export default function Hero() {
             className="mt-16 flex w-full justify-start gap-12 border-t border-white/10 pt-8"
           >
             <div className="flex flex-col items-center text-center">
-              <span className="text-3xl font-bold text-white">16+</span>
+              <span className="text-3xl font-bold text-white">12+</span>
               <span className="text-sm text-slate-400 uppercase tracking-wider">{t.hero.statYears}</span>
             </div>
             <div className="flex flex-col items-center text-center">
