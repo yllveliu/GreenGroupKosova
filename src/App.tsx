@@ -6,12 +6,24 @@ import Process from './components/Process';
 import About from './components/About';
 import Wholesale from './components/Wholesale';
 // import AIPlanner from './components/AIPlanner';
-import Testimonials from './components/Testimonials';
+// import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
 import { Routes, Route, useLocation } from 'react-router-dom';
+
+
+function RouteScrollManager() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) return;
+    window.scrollTo(0, 0);
+  }, [location.pathname, location.hash]);
+
+  return null;
+}
 
 function ScrollToHash() {
   const location = useLocation();
@@ -48,7 +60,7 @@ function HomePage() {
         <Process />
         <Wholesale />
         {/* <AIPlanner /> */}
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Contact />
       </main>
       <Footer />
@@ -58,10 +70,13 @@ function HomePage() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-      <Route path="/terms-conditions" element={<TermsConditions />} />
-    </Routes>
+    <>
+      <RouteScrollManager />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-conditions" element={<TermsConditions />} />
+      </Routes>
+    </>
   );
 }
