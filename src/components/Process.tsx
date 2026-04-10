@@ -35,7 +35,7 @@ export default function Process() {
   return (
     <section id="process" className="section-padding bg-white overflow-hidden">
       <div className="container-custom">
-        <div className="flex flex-col lg:flex-row items-end justify-between mb-16 gap-8">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 sm:mb-16 gap-6 sm:gap-8">
           <div className="max-w-2xl">
             <motion.span
               initial={{ opacity: 0, x: -20 }}
@@ -61,7 +61,7 @@ export default function Process() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="text-base sm:text-lg text-slate-600 max-w-md lg:text-right"
+            className="text-base sm:text-lg text-slate-600 max-w-md lg:text-right lg:ml-auto"
           >
             {t.process.description}
           </motion.p>
