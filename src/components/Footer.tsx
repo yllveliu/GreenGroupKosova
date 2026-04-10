@@ -1,12 +1,23 @@
+import { useEffect, useState } from 'react';
 import { Leaf, Facebook, Instagram, Linkedin, ArrowUp } from 'lucide-react';
-import logo from "../Assets/images/logo.png";
 import { useLanguage } from '../context/LanguageContext';
 
 export default function Footer() {
   const { t } = useLanguage();
+  const [showButton, setShowButton] = useState(false);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowButton(window.scrollY > 200);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <footer className="bg-slate-900 pt-20 pb-10 overflow-hidden relative">
@@ -18,11 +29,7 @@ export default function Footer() {
           {/* LOGO + DESCRIPTION */}
           <div>
             <a href="#home" className="flex items-center gap-2 mb-8 group">
-              <img
-                src={logo}
-                alt="Green Group Kosova"
-                className="h-12 w-auto object-contain"
-              />
+              <img src="/logo.png" alt="Green Group Kosova" loading="eager" />
               <div className="flex flex-col">
                 <span className="font-bold text-xl text-white">Green Group</span>
                 <span className="text-xs text-primary-400 uppercase tracking-widest">
@@ -53,11 +60,11 @@ export default function Footer() {
             <h4 className="text-white font-bold mb-6 text-sm">{t.footer.quickLinksTitle}</h4>
             <ul className="space-y-3 text-sm text-slate-400">
               <li><a href="#home">{t.footer.home}</a></li>
-<li><a href="#about">{t.footer.about}</a></li>
-<li><a href="#products">{t.footer.products}</a></li>
-<li><a href="#process">{t.footer.process}</a></li>
-<li><a href="#wholesale">{t.footer.wholesale}</a></li>
-<li><a href="#contact">{t.footer.contact}</a></li>
+              <li><a href="#about">{t.footer.about}</a></li>
+              <li><a href="#products">{t.footer.products}</a></li>
+              <li><a href="#process">{t.footer.process}</a></li>
+              <li><a href="#wholesale">{t.footer.wholesale}</a></li>
+              <li><a href="#contact">{t.footer.contact}</a></li>
             </ul>
           </div>
 
@@ -66,9 +73,9 @@ export default function Footer() {
             <h4 className="text-white font-bold mb-6 text-sm">{t.footer.productsTitle}</h4>
             <ul className="space-y-3 text-sm text-slate-400">
               <li>{t.footer.freshMushrooms}</li>
-<li>{t.footer.cannedMushrooms}</li>
-<li>{t.footer.flowerSubstrate}</li>
-<li>{t.footer.businessSupply}</li>
+              <li>{t.footer.cannedMushrooms}</li>
+              <li>{t.footer.flowerSubstrate}</li>
+              <li>{t.footer.businessSupply}</li>
             </ul>
           </div>
 
@@ -106,15 +113,16 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} Green Group Kosova</p>
         </div>
 
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-primary-600 text-white shadow-lg shadow-primary-600/30 hover:bg-primary-700 transition-all flex items-center justify-center"
-          aria-label="Scroll to top"
-        >
-        <ArrowUp size={20} />
-        </button>
-        </div>
-      
+        {showButton && (
+          <button
+            onClick={scrollToTop}
+            className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-primary-600 text-white shadow-lg shadow-primary-600/30 hover:bg-primary-700 transition-all flex items-center justify-center"
+            aria-label="Scroll to top"
+          >
+            <ArrowUp size={20} />
+          </button>
+        )}
+      </div>
     </footer>
   );
 }

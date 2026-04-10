@@ -66,24 +66,24 @@ export default function Contact() {
               ))}
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.7 }}
-              className="mt-12"
-            >
-              <a 
-                href="https://wa.me/38344844297" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-green-500 text-white rounded-2xl font-bold hover:bg-green-600 transition-all shadow-lg shadow-green-500/20"
-              >
-                <MessageCircle size={24} />
-                {t.contact.whatsappButton}
-              </a>
-            </motion.div>
-          </div>
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ delay: 0.7 }}
+  className="mt-12"
+>
+  <a 
+    href="viber://chat?number=+38344844297"
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-3 px-8 py-4 bg-purple-600 text-white rounded-2xl font-bold hover:bg-purple-700 transition-all shadow-lg shadow-purple-500/20"
+  >
+    <MessageCircle size={24} />
+    {t.contact.viberButton}
+  </a>
+</motion.div>
+</div>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}

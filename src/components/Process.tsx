@@ -138,13 +138,18 @@ export default function Process() {
                 {t.process.ctaDescription}
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-4 w-full md:w-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full md:w-auto">
               {t.process.ctaItems.map((item) => (
-                <div key={item} className="flex items-center gap-2 text-white font-medium bg-white/5 px-4 py-3 rounded-xl border border-white/10">
-                  <CheckCircle2 size={18} className="text-primary-400" />
-                  <span>{item}</span>
-                </div>
-              ))}
+  <div
+    key={item}
+    className="flex items-start gap-2 text-white font-medium bg-white/5 px-4 py-3 rounded-xl border border-white/10"
+  >
+    <CheckCircle2 size={18} className="text-primary-400 shrink-0" />
+    <span className="flex-1 text-sm sm:text-base break-words leading-snug">
+      {item}
+    </span>
+  </div>
+))}
             </div>
           </div>
         </motion.div>
