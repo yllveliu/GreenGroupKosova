@@ -1,6 +1,6 @@
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
-import heroImg from "../Assets/images/hero-mushrooms.png";
+import heroImg from "../Assets/images/hero-mushrooms.webp";
 import { useLanguage } from '../context/LanguageContext';
 
 export default function Hero() {
@@ -13,14 +13,16 @@ export default function Hero() {
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={heroImg}
-          alt="Mushroom Farm"
-          className="w-full h-full object-cover opacity-40 scale-105 animate-slow-zoom"
-          referrerPolicy="no-referrer"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/30 to-slate-900/70" />
-      </div>
+  <img
+    src={heroImg}
+    alt="Mushroom Farm"
+    width="1920"
+    height="1080"
+    className="w-full h-full object-cover opacity-40 scale-105 animate-slow-zoom"
+    referrerPolicy="no-referrer"
+  />
+  <div className="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/30 to-slate-900/70" />
+</div>
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">

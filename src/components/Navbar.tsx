@@ -49,13 +49,15 @@ export default function Navbar() {
       )}
     >
       <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 sm:gap-3 group min-w-0">
-          <img
-            src="/logo.png"
-            alt="Green Group Kosova"
-            loading="eager"
-            className="h-10 sm:h-11 lg:h-12 w-auto flex-shrink-0"
-          />
+  <Link to="/" className="flex items-center gap-2 sm:gap-3 group min-w-0">
+    <img
+      src="/logo.webp"
+      alt="Green Group Kosova"
+      width="48"
+      height="48"
+      loading="eager"
+      className="h-10 sm:h-11 lg:h-12 w-auto flex-shrink-0"
+    />
 
           <div className="flex flex-col min-w-0">
             <span
