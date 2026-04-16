@@ -37,13 +37,15 @@ export default function Footer() {
 
           {/* LOGO */}
           <div className="min-w-0">
-            <Link to="/" className="flex items-center gap-3 mb-6 sm:mb-8 group">
-              <img
-                src="/logo.png"
-                alt="Green Group Kosova"
-                loading="eager"
-                className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 object-contain shrink-0"
-              />
+  <Link to="/" className="flex items-center gap-3 mb-6 sm:mb-8 group">
+    <img
+      src="/logo.webp"
+      alt="Green Group Kosova"
+      width="64"
+      height="64"
+      loading="lazy"
+      className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 object-contain shrink-0"
+    />
 
               <div className="flex flex-col min-w-0">
                 <span className="font-bold text-lg sm:text-xl text-white leading-none truncate">
